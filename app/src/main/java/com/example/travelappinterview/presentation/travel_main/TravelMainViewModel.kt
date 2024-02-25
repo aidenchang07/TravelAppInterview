@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TravelMainViewModel @Inject constructor(
     private val getAttractionsUseCase: GetAttractionsUseCase,
-    private val languageManager: LanguageManager
+    val languageManager: LanguageManager
 ): ViewModel() {
     private val _state = mutableStateOf(TravelMainState())
     val state: State<TravelMainState> = _state
