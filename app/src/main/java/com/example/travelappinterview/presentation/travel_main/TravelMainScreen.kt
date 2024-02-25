@@ -9,12 +9,16 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -26,6 +30,7 @@ import com.example.travelappinterview.presentation.travel_main.components.Travel
  * Created by AidenChang 2024/02/22
  */
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TravelMainScreen(
     navController: NavController,
@@ -34,7 +39,16 @@ fun TravelMainScreen(
     val state = viewModel.state.value
     val lazyListState = rememberLazyListState()
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            TopAppBar(
+                title = { Text("Taipei Tour") },
+                colors = topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = Color.White
+                )
+            )
+        }
     ) {
         Box(
             modifier = Modifier.fillMaxSize()
