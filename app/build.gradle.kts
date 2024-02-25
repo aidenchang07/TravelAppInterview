@@ -87,4 +87,6 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    implementation("androidx.browser:browser:1.7.0")
 }
