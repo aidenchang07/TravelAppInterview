@@ -63,15 +63,15 @@ fun TravelMainScreen(
     var showBottomSheet by remember { mutableStateOf(false) }
 
     val languageMap = mapOf(
-        Language.TW to "正體中文",
-        Language.CN to "简体中文",
+        Language.TW to "繁體中文",
+        Language.CN to "zh-cn",
         Language.EN to "English",
-        Language.JA to "日本語",
-        Language.KO to "한국어",
-        Language.ES to "Español",
-        Language.ID to "Bahasa Indonesia",
-        Language.TH to "ไทย",
-        Language.VI to "Tiếng Việt"
+        Language.JA to "ja",
+        Language.KO to "ko",
+        Language.ES to "es",
+        Language.ID to "id",
+        Language.TH to "th",
+        Language.VI to "vi"
     )
 
     Scaffold(
