@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = Screen.TravelDetailScreen.route + "/{$PARAM_ATTRACTION_ID}/{$PARAM_PAGE}"
                         ) {
-                            TravelDetailScreen()
+                            TravelDetailScreen(navController = navController)
                         }
                     }
 
