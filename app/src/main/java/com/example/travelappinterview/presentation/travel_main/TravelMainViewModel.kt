@@ -65,5 +65,12 @@ class TravelMainViewModel @Inject constructor(
 
     fun updateLanguage(language: String) {
         setLanguageUseCase(language)
+        _state.value = _state.value.copy(
+            isLoading = false,
+            attractions = emptyList(),
+            error = "",
+            isLastPage = false
+        )
+        getAttractions()
     }
 }
