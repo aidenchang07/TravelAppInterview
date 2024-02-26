@@ -1,10 +1,7 @@
 package com.example.travelappinterview.presentation.travel_main
 
 import android.util.Log
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -12,8 +9,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -42,6 +37,7 @@ import androidx.navigation.NavController
 import com.example.travelappinterview.R
 import com.example.travelappinterview.common.Language
 import com.example.travelappinterview.presentation.Screen
+import com.example.travelappinterview.presentation.travel_main.components.BottomSheetContent
 import com.example.travelappinterview.presentation.travel_main.components.TravelMainItem
 import kotlinx.coroutines.launch
 
@@ -156,40 +152,6 @@ fun TravelMainScreen(
                     scope.launch { sheetState.hide() }
                 }
             )
-        }
-    }
-}
-
-@Composable
-fun BottomSheetContent(
-    languageMap: Map<String, String>,
-    currentLanguage: String,
-    onLanguageSelected: (String) -> Unit
-) {
-    Column(
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        languageMap.forEach { (innerLanguage, name) ->
-            val isSelected = currentLanguage == innerLanguage
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onLanguageSelected(innerLanguage) }
-                    .padding(16.dp)
-            ) {
-                Text(
-                    text = name,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.weight(1f)
-                )
-                if (isSelected) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = "Selected",
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                }
-            }
         }
     }
 }
