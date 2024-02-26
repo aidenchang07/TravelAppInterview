@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -167,13 +166,15 @@ fun BottomSheetContent(
     currentLanguage: String,
     onLanguageSelected: (String) -> Unit
 ) {
-    Column(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
-        languageMap.forEach { (code, name) ->
-            val isSelected = currentLanguage == code
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        languageMap.forEach { (innerLanguage, name) ->
+            val isSelected = currentLanguage == innerLanguage
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onLanguageSelected(code) }
+                    .clickable { onLanguageSelected(innerLanguage) }
                     .padding(16.dp)
             ) {
                 Text(
