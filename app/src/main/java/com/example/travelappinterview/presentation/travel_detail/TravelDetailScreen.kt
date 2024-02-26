@@ -69,7 +69,7 @@ fun TravelDetailScreen(
                         .fillMaxWidth()
                         .height(250.dp),
                     painter = rememberAsyncImagePainter(model = attractionDetail.imageUrl),
-                    contentDescription = "",
+                    contentDescription = null,
                     contentScale = ContentScale.Crop
                 )
                 Column(

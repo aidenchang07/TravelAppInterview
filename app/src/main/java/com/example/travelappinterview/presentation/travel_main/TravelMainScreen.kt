@@ -84,7 +84,7 @@ fun TravelMainScreen(
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.translation),
-                        contentDescription = "",
+                        contentDescription = null,
                         tint = Color.White,
                         modifier = Modifier.size(24.dp)
                     )

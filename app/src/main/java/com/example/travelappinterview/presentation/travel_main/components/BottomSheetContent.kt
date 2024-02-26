@@ -43,7 +43,7 @@ fun BottomSheetContent(
                 if (isSelected) {
                     Icon(
                         imageVector = Icons.Default.Check,
-                        contentDescription = "Selected",
+                        contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }

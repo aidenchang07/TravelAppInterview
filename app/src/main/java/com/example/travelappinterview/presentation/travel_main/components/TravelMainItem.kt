@@ -51,7 +51,7 @@ fun TravelMainItem(
                         crossfade(true)
                     }).build()
             ),
-            contentDescription = "",
+            contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Spacer(modifier = Modifier.width(8.dp))
@@ -78,7 +78,7 @@ fun TravelMainItem(
                 .align(Alignment.CenterVertically)
                 .size(24.dp),
             imageVector = Icons.Default.KeyboardArrowRight,
-            contentDescription = "Go To"
+            contentDescription = null
         )
     }
 }
