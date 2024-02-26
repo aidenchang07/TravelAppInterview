@@ -28,12 +28,12 @@ class TravelMainViewModel @Inject constructor(
     private var isLastPage = false
 
     init {
-        getAttractions()
+        getAttractions(false)
     }
 
-    private fun getAttractions() {
+    private fun getAttractions(forceLoading: Boolean) {
         if (_state.value.isLoading) return
-        getAttractionsUseCase(getLanguageUseCase()).onEach { result ->
+        getAttractionsUseCase(getLanguageUseCase(), forceLoading).onEach { result ->
             when(result) {
                 is Resource.Success -> {
                     _state.value = _state.value.copy(
@@ -55,7 +55,7 @@ class TravelMainViewModel @Inject constructor(
 
     fun loadMoreAttractions() {
         if (!isLastPage) {
-            getAttractions()
+            getAttractions(false)
         }
     }
 
@@ -71,6 +71,6 @@ class TravelMainViewModel @Inject constructor(
             error = "",
             isLastPage = false
         )
-        getAttractions()
+        getAttractions(true)
     }
 }

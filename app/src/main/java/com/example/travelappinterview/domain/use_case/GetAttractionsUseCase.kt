@@ -21,7 +21,8 @@ class GetAttractionsUseCase @Inject constructor(
     private val pageSize = 30
     private var isLastPage = false
 
-    operator fun invoke(language: String): Flow<Resource<PagedResult<Attraction>>> = flow {
+    operator fun invoke(language: String, forceLoading: Boolean): Flow<Resource<PagedResult<Attraction>>> = flow {
+        if (forceLoading) currentPage = 0
         currentPage++
         emit(Resource.Loading())
         try {
