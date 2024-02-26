@@ -4,9 +4,10 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.travelappinterview.common.LanguageManager
 import com.example.travelappinterview.common.Resource
 import com.example.travelappinterview.domain.use_case.GetAttractionsUseCase
+import com.example.travelappinterview.domain.use_case.GetLanguageUseCase
+import com.example.travelappinterview.domain.use_case.SetLanguageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -19,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class TravelMainViewModel @Inject constructor(
     private val getAttractionsUseCase: GetAttractionsUseCase,
-    val languageManager: LanguageManager
+    private val getLanguageUseCase: GetLanguageUseCase,
+    private val setLanguageUseCase: SetLanguageUseCase
 ): ViewModel() {
     private val _state = mutableStateOf(TravelMainState())
     val state: State<TravelMainState> = _state
@@ -31,7 +33,7 @@ class TravelMainViewModel @Inject constructor(
 
     private fun getAttractions() {
         if (_state.value.isLoading) return
-        getAttractionsUseCase(languageManager.currentLanguage).onEach { result ->
+        getAttractionsUseCase(getLanguageUseCase()).onEach { result ->
             when(result) {
                 is Resource.Success -> {
                     _state.value = _state.value.copy(
@@ -55,5 +57,13 @@ class TravelMainViewModel @Inject constructor(
         if (!isLastPage) {
             getAttractions()
         }
+    }
+
+    fun loadLanguage(): String {
+        return getLanguageUseCase()
+    }
+
+    fun updateLanguage(language: String) {
+        setLanguageUseCase(language)
     }
 }

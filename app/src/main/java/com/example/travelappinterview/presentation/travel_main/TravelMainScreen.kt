@@ -149,9 +149,9 @@ fun TravelMainScreen(
         ) {
             BottomSheetContent(
                 languageMap = languageMap,
-                currentLanguage = viewModel.languageManager.currentLanguage,
+                currentLanguage = viewModel.loadLanguage(),
                 onLanguageSelected = { language ->
-                    viewModel.languageManager.currentLanguage = language
+                    viewModel.updateLanguage(language)
                     showBottomSheet = false
                     scope.launch { sheetState.hide() }
                 }
